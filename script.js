@@ -17,6 +17,33 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
 
+    // --- Scrollspy Navigation ---
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a:not(.btn-premium)');
+
+    const scrollSpy = () => {
+        let current = '';
+        const scrollY = window.pageYOffset;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (current && link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', scrollSpy);
+    scrollSpy(); // Trigger once on load
+
     // --- Inline Bio Expansion Logic ---
     const readMoreBtn = document.getElementById('readMoreBtn');
     const expandedBio = document.getElementById('expandedBio');
