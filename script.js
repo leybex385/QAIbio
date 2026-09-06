@@ -17,37 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
 
-    // --- Modal Logic ---
+    // --- Inline Bio Expansion Logic ---
     const readMoreBtn = document.getElementById('readMoreBtn');
-    const bioModal = document.getElementById('bioModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
+    const expandedBio = document.getElementById('expandedBio');
 
-    if (readMoreBtn && bioModal && closeModalBtn) {
-        // Open Modal
+    if (readMoreBtn && expandedBio) {
         readMoreBtn.addEventListener('click', () => {
-            bioModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-
-        // Close Modal via button
-        closeModalBtn.addEventListener('click', () => {
-            bioModal.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Close Modal via overlay click
-        bioModal.addEventListener('click', (e) => {
-            if (e.target === bioModal) {
-                bioModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close Modal via ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && bioModal.classList.contains('active')) {
-                bioModal.classList.remove('active');
-                document.body.style.overflow = '';
+            expandedBio.classList.toggle('expanded');
+            
+            if (expandedBio.classList.contains('expanded')) {
+                readMoreBtn.innerHTML = 'SHOW LESS <span>&uarr;</span>';
+            } else {
+                readMoreBtn.innerHTML = 'READ MORE <span>&rarr;</span>';
             }
         });
     }
