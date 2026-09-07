@@ -1195,6 +1195,16 @@ blockquote {
     margin-bottom: 1.2rem;
 }
 
+.advisory-bio {
+    font-size: 0.85rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
 
 
 /* --- OUR APPROACH SECTION REDESIGN --- */
