@@ -1111,6 +1111,92 @@ blockquote {
     }
 }
 
+/* --- ADVISORY BOARD GRID --- */
+.advisory-board {
+    margin-top: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 10;
+}
+
+.advisory-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.advisory-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: #4a5568;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.advisory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.advisory-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 3rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.advisory-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.advisory-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    background-color: #eee;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.advisory-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 0.3rem;
+}
+
+.advisory-role {
+    font-size: 0.95rem;
+    color: #1a202c;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.advisory-committee {
+    font-size: 0.85rem;
+    color: #2d3748;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+
+
 /* --- OUR APPROACH SECTION REDESIGN --- */
 .approach-section {
     position: relative;
@@ -1342,15 +1428,22 @@ footer p {
     }
 }
 
-.reveal {
+/* --- CINEMATIC SCROLL REVEAL SYSTEM --- */
+.reveal-item {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
 }
 
-.reveal.active {
+.reveal-item.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.reveal-item.no-transition {
+    transition: none !important;
 }
 
 /* --- READ MORE MODAL & FEATURE STYLING --- */
@@ -1779,3 +1872,7 @@ footer p {
         text-align: center;
     }
 }
+
+
+
+

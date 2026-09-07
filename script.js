@@ -1,21 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll reveal animation
-    const reveals = document.querySelectorAll('.reveal');
+    // --- Cinematic Scroll Reveal System ---
+    const revealItems = document.querySelectorAll('.reveal-item');
+    
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const revealPoint = 100;
+    if (!prefersReducedMotion) {
+        let delay = 0;
+        let lastIntersectTime = 0;
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1
+        };
 
-        reveals.forEach(reveal => {
-            const revealTop = reveal.getBoundingClientRect().top;
-            if (revealTop < windowHeight - revealPoint) {
-                reveal.classList.add('active');
+        const observer = new IntersectionObserver((entries, observer) => {
+            const now = Date.now();
+            // Reset delay if items enter the viewport at different times
+            if (now - lastIntersectTime > 150) {
+                delay = 0;
             }
-        });
-    };
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!entry.target.classList.contains('active')) {
+                        // Stagger delay for grouped items appearing simultaneously
+                        entry.target.style.transitionDelay = `${delay}ms`;
+                        entry.target.classList.add('active');
+                        delay += 100; // 100ms stagger between elements
+                        lastIntersectTime = now;
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Trigger once on load
+        revealItems.forEach(item => observer.observe(item));
+    } else {
+        // If reduced motion is enabled, make all visible immediately
+        revealItems.forEach(item => item.classList.add('active', 'no-transition'));
+    }
 
     // --- Scrollspy Navigation ---
     const sections = document.querySelectorAll('section');
