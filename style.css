@@ -1099,13 +1099,209 @@ blockquote {
     max-width: 800px;
     margin: 0 auto;
     border-radius: 20px;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(144, 98, 255, 0.15);
+}
+
+.profile-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-stat .stat-value {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--accent-solid);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+
+.profile-stat .stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.profile-skills .skills-title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #4a5568;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.skill-tag {
+    background: rgba(144, 98, 255, 0.06);
+    color: var(--accent-solid);
+    border: 1px solid rgba(144, 98, 255, 0.15);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(144, 98, 255, 0.12);
+    border-color: rgba(144, 98, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- EXECUTIVE PROFILE (Alexandra) --- */
+.executive-profile-section {
+    margin-top: 6rem;
+    padding-top: 6rem;
+    border-top: 1px solid rgba(144, 98, 255, 0.2);
+    position: relative;
+}
+
+.executive-profile-section .editorial-row {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+}
+
+.executive-image-wrapper {
+    padding-right: 0;
+}
+
+.executive-image-wrapper img {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.executive-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.executive-header {
+    margin-bottom: 2rem;
+}
+
+.executive-header .editorial-name {
+    font-size: 2.8rem;
+    letter-spacing: -0.02em;
+    color: #1a202c;
+}
+
+.executive-header .executive-role {
+    font-size: 1rem;
+    color: var(--accent-solid);
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.executive-positioning {
+    font-size: 1.25rem;
+    color: #1a202c;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-display);
+}
+
+.executive-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(144, 98, 255, 0.3), transparent);
+    margin: 0 0 2.5rem 0;
+}
+
+.executive-metadata-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.metadata-block {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid rgba(144, 98, 255, 0.4);
+}
+
+.metadata-title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.metadata-text {
+    font-size: 1.05rem;
+    color: #2d3748;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Bio Expansion */
+.bio-expanded {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.bio-expanded.expanded {
+    max-height: 4000px;
+    opacity: 1;
+    margin-top: 2rem;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(144, 98, 255, 0.15);
+}
+
+.bio-section h3 {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.bio-section p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Editorial Inline Image */
+.editorial-inline-image {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.05);
     display: block;
 }
 
 @media (max-width: 900px) {
-    .editorial-row {
+    .editorial-row,
+    .executive-profile-section .editorial-row {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
